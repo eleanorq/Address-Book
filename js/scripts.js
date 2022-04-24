@@ -41,9 +41,21 @@ Contact.prototype.fullName = function() {
 };
 
 
-
-
 let testContact = new Contact("Ada", "Lovelace", "503-555-1111");
 
 testContact
 this.currentID
+// User Interface Logic ----------
+let AddressBook = new AddressBook();
+
+$(document).ready(function() {
+    $("form#new-contact").submit(function(event) {
+        event.preventDefault();
+        const inputtedFirstName= $("input#new-first-name").val();
+        const inputtedLastName= $("input#new-last-name").val();
+        const inputtedPhoneNumber = $("input#new-phone-number").val();
+        let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+            AddressBook.addContact(newContact);
+            console.log(addressBook.contacts);
+    });
+});
